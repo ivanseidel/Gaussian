@@ -84,6 +84,8 @@ result = g1;
 result += g2;
 ```
 
+----------------------
+
 ### `GaussianAverage` class
 
 This class provides a simple but really powerfull filter called [Moving Average](https://en.wikipedia.org/wiki/Moving_average).
@@ -112,26 +114,52 @@ GaussianAverage myAverage(30);
 
 Now that we have our class instantiated, let's proceed to add Values (or Gaussians) to it.
 
-There are two main ways to add values to the `Average`.
-
-1. Method `sum(Gaussian)`
-2. **+=** overloaded method
+There are two main ways to add values to the `Average`. Using the `sum(Gaussian)` method, or `+=` overloaded operator.
 
 #### To add values to the Moving Average just use the operator `+=`
 ```c++
 // Add it through the add method
+myAverage.add(Gaussian(32,20));
+myAverage.add(myGaussian);
+
+// Add it with the overloaded operator +=
 myAverage += Gaussian(32, 20);
-myAverage += Gaussian(70, 3);
-myAverage += Gaussian(11, 44)4;
+myAverage += myGaussian;
 
 // You can also add an double/integer to it
-// (will be converted automaticaly to a Gaussian object)
+// (note that the Variance will be always the same, and very HIGH)
 myAverage += 32;
 myAverage += 70;
-myAverage += 11;
-
 ```
 
+Ok, we have created and added... What is missing? Yes, Process.
+
+The process of calculating the average is not done every time you add something new (you migth want
+to add three samples before calculating). So, to calculate it you can use the method `process()`.
+
+Once you have processed, the values of the `mean` and `variance` will be stored inside the object.
+Note that `process` method returns the `self` object.
+
+To minimize the CPU usage, we have implemented a cache detector. If you use the method `process` more
+than once before adding something new, the new average will not be calculated.
+
+#### Process the new Average
+```c++
+// This will run the calculation and store the result inside the myAverage object
+// (remember that it's also a Gaussian!)
+myAverage.process();
+
+// Or perhaps, you want to save it
+mySavedAverage = myAverage.process();
+
+// Or you want to process, change it, and then save
+myAverage.process();
+myAverage.vary(30).move(10);
+
+mySavedAverage = myAverage;
+```
+
+-------------
 
 ## Library Reference
 
