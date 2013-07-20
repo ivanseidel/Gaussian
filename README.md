@@ -84,7 +84,7 @@ result = g1;
 result += g2;
 ```
 
-----------------------
+============================
 
 ### `GaussianAverage` class
 
@@ -159,45 +159,58 @@ myAverage.vary(30).move(10);
 mySavedAverage = myAverage;
 ```
 
--------------
+------------------------
 
 ## Library Reference
 
-### You should know:
+### `Gaussian` class
 
-- `getAvailable()` - Get the first available Timer.
+- `double` `Gaussian::mean` - Mean of the Gaussian.
 
-- `attachInterrupt(void (*isr)())` - Attach a interrupt (callback function) for the timer of the object.
+- `double` `Gaussian::variance` - Variance of the Gaussian.
 
-- `detachInterrupt()` - Detach current callback of timer.
+- `Gaussian::Gaussian(double _mean = 0.0, double _variance = MAX_VARIANCE)` - Constructor.
 
-- `start(long microseconds = -1)` - Start the timer with an optional period parameter.
+- `Gaussian` `Gaussian::setMean(double _val)` - Set the mean to _val.
 
-- `stop()` - Stop the timer
+- `Gaussian` `Gaussian::move(double _val)` - Adds _val to the mean.
 
-- `setFrequency(long frequency)` - Set the timer frequency
+- `Gaussian` `Gaussian::setVariance(double _val)` - Set the variance to _val.
 
-- `long getFrequency()` - Get the timer frequency
+- `Gaussian` `Gaussian::vary(double _val)` - Adds _val to the variance.
 
-- `setPeriod(long microseconds)` - Set the timer period (in microseconds)
+- `void` `Gaussian::operator=(Gaussian _gaus)` - Copies the mean and variance to current object.
 
-- `long getPeriod()` - Get the timer period (in microseconds)
+- `Gaussian` `Gaussian::operator+(Gaussian _gaus)` - Sum gaussians and returns the new Gaussian.
 
-### You don't need to know:
+- `void` `Gaussian::operator+=(Gaussian _gaus)` - Sum gaussians and saves it to itself.
 
-- `int timer` - Stores the object timer id (to acces Timers struct array).
+- **protected** `Gaussian` `sum(double _mean, double _variance)` - Return the sum of itself with _mean and _variance.
 
-- `DueTimer(int _timer)` - Instantiate a new DueTimer object for Timer _timer (NOTE: All objects are already instantiated!).
+=======================
 
-- `static const Timer Timers[]` - Stores all timers information
+### `GaussianAverage` class
 
-- `static void (*callbacks[])()` - Stores all callbacks for all timers
+- `GaussianAverage::GaussianAverage(int _n = 4)` - Constructor. n = number of samples to hold.
 
+- `void` `GaussianAverage::add(Gaussian g)` - Add the Gaussian g to the LinkedList.
 
-### Hardware Information
+- `void` `GaussianAverage::operator+=(Gaussian _gaus)` - Add the Gaussian _gaus to the LinkedList.
 
-More information on the Timer Counter module of the µC on the Arduino Due
-can be found in the documentation file [TimerCounter](TimerCounter.md).
+- `void` `GaussianAverage::operator+=(double _mean)` - Add a new Gaussian with mean _mean to the LinkedList.
+
+- `Gaussian` `GaussianAverage::process()` - Calculate the average Gaussian and returns it.
+
+- **proteced** `LinledList<Gaussian>` `GaussianAverage::*gaussians` - Pointer to linked list that will hold the latest Gaussians.
+
+- **proteced** `int` `GaussianAverage::n` - Number of samples to hold.
+
+- **proteced** `bool` `GaussianAverage::isCached` - Flag that indicates if a process() MUST be done.
+
+- **proteced** `Gaussian` `avg` - Only a temporary helper used by process().
+
+----------------------------
+
 
 ### Version History
 
