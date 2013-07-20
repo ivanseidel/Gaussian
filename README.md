@@ -20,7 +20,7 @@ A class that contains a `mean` and a `variance` attribute.
 
 Also contains methods to do sums with others `Gaussians`.
 
-#### To declare a simple Gaussian:
+#### To declare a Gaussian object:
 ```c++
 // Simple Gaussian initialization and instantiation
 Gaussian myGaussian = Gaussian(mean, variance);
@@ -30,56 +30,57 @@ Gaussian myGaussian = Gaussian();
 
 // This will do the same as above
 Gaussian myGaussian();
+Gaussian myGaussian(0);
 ```
 
-To call a function `handler` `10` times a second:
+Dealing with `mean` is very easy. You can either access it direcly (attribute `mean`),
+or change it with the methods `move` and `setMean`. Both methods returns the `self`
+Gaussian object, allowing you to do actions consecutively in one single line.
 
 ```c++
-Timer3.attachInterrupt(handler).setFrequency(10).start();
+// Set or Get the attribute direcly to the object
+myGaussian.mean = 10;
+
+// Increase the mean by `x`
+myGaussian.move(10);
+
+// Set to 10 and move by -10
+myGaussian.setMean(10).move(-10);
 ```
 
-In case you need to stop a timer, just do like this:
+When dealing with the `variance`, you can also do the same as the `mean`. Access it direcly from
+the object, or use the methods `vary` and `setVariance` to change the `variance`.
 
 ```c++
-Timer3.stop();
+// Set or Get the attribute direcly to the object
+myGaussian.variance = 4;
+
+// Increase the variance by `y`
+myGaussian.vary(3);
+
+// Set to 3 and then vary 10 more
+myGaussian.setVariance(3).vary(10);
 ```
 
-And to continue running:
+Ok, now that we can change both `mean` and `variance`, we can now go to the next step: Summing Gaussians.
+
+It's already implemented all the math to do that, and it's nos so hard to understand it, after resuming
+sum of Gaussians to 'sum of pondered values'.
+
+The operators **+, +=, =** works just good with the class `Gaussian`.
 
 ```c++
-Timer3.start();
+Gaussian g1 = Gaussian(0, 10);
+Gaussian g2(10, 10);
+
+// Simply sum both of them (the + method is overloaded on the class)
+Gaussian result = g1 + g2;
+
+// Or do like this
+result = g1;
+result += g2;
 ```
 
-There are `9` Timer objects already instantiated for you:
-`Timer0`, `Timer1`, `Timer2`, `Timer3`, `Timer4`, `Timer5`, `Timer6`, `Timer7` and `Timer8`.
-
-### TIPs and Warnings
-
-```c++
-Timer4.attatchInterrupt(handler).setFrequency(10).start();
-// Is the same as:
-Timer4.attatchInterrupt(handler);
-Timer4.setFrequency(10);
-Timer4.start();
-
-// To create a custom timer, refer to:
-DueTimer myTimer = DueTimer(0); // Creates a Timer 0 object.
-DueTimer myTimer = DueTimer(3); // Creates a Timer 3 object.
-DueTimer myTimer = DueTimer(t); // Creates a Timer t object.
-// Note: Maximum t allowed is 8, as there is only 9 timers [0..8];
-
-Timer1.setHandler(handler1).start(10);
-Timer1.setHandler(handler2).start(10);
-DueTimer myTimer = DueTimer(1);
-myTimer.setHandler(handler3).start(20);
-// Will run only handle3, on Timer 1 (You are just overriding the callback)
-
-Timer.getAvailable().attachInterrupt(callback1).start(10);
-// Start timer on first available timer
-DueTimer::getAvailable().attachInterrupt(callback2).start(10);
-// Start timer on second available timer
-// And so on...
-```
 
 ## Library Reference
 
@@ -121,6 +122,4 @@ can be found in the documentation file [TimerCounter](TimerCounter.md).
 
 ### Version History
 
-* `1.2 (2013-30-03)`: Clock selection. Getters. `getAvailable()`. "AvailableTimer" Example.
-* `1.1 (2013-30-03)`: Added Timer6, Timer7, Timer8 (TC2).
-* `1.0 (2013-30-03)`: Original release.
+* `1.0 (2013-07-20)`: Original release
