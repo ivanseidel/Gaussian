@@ -104,7 +104,7 @@ setting it (The default value when a Gaussian is created is really High, and is 
 Also, `GaussianAverage` class EXTENDS from `Gaussian`. Instead of calculating only the average (mean), you have access
 to the variance as well.
 
-**ATTENTION: This class REQUIRES `LinkedList` class as well. It MUST be included BEFORE `GaussianAverage`.**
+**ATTENTION: This class REQUIRES [LinkedList class](https://github.com/ivanseidel/LinkedList) as well. It MUST be included BEFORE `GaussianAverage`.**
 ```c++
 #include <LinkedList.h>
 #include <GaussianAverage.h>
