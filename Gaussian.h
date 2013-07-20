@@ -54,6 +54,43 @@ public:
 	}
 
 	/*
+		Set the mean to _val
+	*/
+	virtual Gaussian setMean(double _val){
+		mean = _val;
+
+		return *this;
+	}
+
+	/*
+		Move the mean by _val
+	*/
+	virtual Gaussian move(double _val){
+		mean += _val;
+
+		return *this;
+	}
+
+	/*
+		Increase the variance by _val
+	*/
+	virtual Gaussian vary(double _val){
+		variance += _val;
+
+		return *this;
+	}
+
+	/*
+		Increase the variance by _val
+	*/
+	virtual Gaussian setVariance(double _val){
+		variance = _val;
+
+		return *this;
+	}
+
+
+	/*
 		Copies the same mean and variance to the current object
 	*/
 	virtual void operator=(Gaussian _gaus){

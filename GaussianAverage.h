@@ -34,7 +34,7 @@ protected:
 	// Number of gaussians to keep record of
 	int n;
 
-	// Flag that will notify if lastAvg is fresh
+	// Flag that indicates if a process MUST be done
 	bool isCached;
 
 	// Only a temporary helper, to minimize memory usage
@@ -57,14 +57,14 @@ public:
 	/*
 		Adds a new Gaussian to the FIFO
 	*/
-	virtual void add(Gaussian g){
+	virtual void add(Gaussian _gaus){
 		// Notify that we have changed things
 		isCached = false;
 
 		while(gaussians->size() >= n)
 			gaussians->shift();
 
-		gaussians->add(g);
+		gaussians->add(_gaus);
 	}
 	
 	/*
@@ -72,6 +72,13 @@ public:
 	*/
 	virtual void operator+=(Gaussian _gaus){
 		add(_gaus);
+	}
+
+	/*
+		Adds a new Gaussian to the FIFO with the overloaded '+='
+	*/
+	virtual void operator+=(double _mean){
+		add(Gaussian(_mean));
 	}
 
 	/*
