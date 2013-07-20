@@ -17,6 +17,7 @@ Find out more about Gaussians here: [Wikipedia::Gaussian Function](http://en.wik
 1. [Download](https://github.com/ivanseidel/Gaussian/releases) the Latest release from gitHub.
 2. Unzip and modify the Folder name to "Gaussian" (Remove the '-version')
 3. Paste the modified folder on your Library folder (On your `Libraries` folder inside Sketchbooks or Arduino software).
+4. Download and Install [LinkedList class](https://github.com/ivanseidel/LinkedList) as well, if you are going to use `GaussianAverage` class. 
 
 ## Getting started
 
