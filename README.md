@@ -2,9 +2,12 @@
 
 This library was developed targeting `Arduino` applications. However, works just great with any C++.
 
-The use of Gaussians is really hard because requires a deep understanding about complex math. **Not anymore.**  
-We have done it for you, fell free to use the fully-implemented class of `Gaussian`.  
-Do you want to do a [Moving Average](https://en.wikipedia.org/wiki/Moving_average)? `GaussianAverage` is just what you are looking for.
+The use of Gaussians is really hard because requires a deep understanding about complex math.
+
+**Not anymore.** We have done it for you, fell free to use the fully-implemented class of `Gaussian`.
+
+Do you want to do a [Moving Average](https://en.wikipedia.org/wiki/Moving_average)? `GaussianAverage`
+is just what you are looking for. Simple or with Gaussians, it's already implemented for you.
 
 ## Installation
 
@@ -97,6 +100,12 @@ setting it (The default value when a Gaussian is created is really High, and is 
 
 Also, `GaussianAverage` class EXTENDS from `Gaussian`. Instead of calculating only the average (mean), you have access
 to the variance as well.
+
+**ATTENTION: This class REQUIRES `LinkedList` class as well. It MUST be included BEFORE `GaussianAverage`.**
+```c++
+#include <LinkedList.h>
+#include <GaussianAverage.h>
+```
 
 #### To declare a `GaussianAverage` object
 
