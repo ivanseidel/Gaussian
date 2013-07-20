@@ -37,6 +37,7 @@ Dealing with `mean` is very easy. You can either access it direcly (attribute `m
 or change it with the methods `move` and `setMean`. Both methods returns the `self`
 Gaussian object, allowing you to do actions consecutively in one single line.
 
+#### Set, Change and get `mean` values
 ```c++
 // Set or Get the attribute direcly to the object
 myGaussian.mean = 10;
@@ -51,6 +52,7 @@ myGaussian.setMean(10).move(-10);
 When dealing with the `variance`, you can also do the same as the `mean`. Access it direcly from
 the object, or use the methods `vary` and `setVariance` to change the `variance`.
 
+#### Set, Change and get `variance` values
 ```c++
 // Set or Get the attribute direcly to the object
 myGaussian.variance = 4;
@@ -69,6 +71,7 @@ sum of Gaussians to 'sum of pondered values'.
 
 The operators **+, +=, =** works just good with the class `Gaussian`.
 
+#### Sum, Set and do Math with Gaussians
 ```c++
 Gaussian g1 = Gaussian(0, 10);
 Gaussian g2(10, 10);
@@ -79,6 +82,54 @@ Gaussian result = g1 + g2;
 // Or do like this
 result = g1;
 result += g2;
+```
+
+### `GaussianAverage` class
+
+This class provides a simple but really powerfull filter called [Moving Average](https://en.wikipedia.org/wiki/Moving_average).
+
+It's an average of the last `n` values, but using `Gaussians` to incorporate the power of uncertainty.
+
+You can also use it as a simple `Moving Average` by setting the `variance` to a fixed value, or just not
+setting it (The default value when a Gaussian is created is really High, and is a constant).
+
+Also, `GaussianAverage` class EXTENDS from `Gaussian`. Instead of calculating only the average (mean), you have access
+to the variance as well.
+
+#### To declare a `GaussianAverage` object
+
+```c++
+// The default number of samples is 4
+GaussianAverage myAverage = GaussianAverage();
+
+// If you want to change it pass to constructor
+// 30 samples will be stored
+GaussianAverage myAverage = GaussianAverage(30);
+
+// The same as above
+GaussianAverage myAverage(30);
+```
+
+Now that we have our class instantiated, let's proceed to add Values (or Gaussians) to it.
+
+There are two main ways to add values to the `Average`.
+
+1. Method `sum(Gaussian)`
+2. **+=** overloaded method
+
+#### To add values to the Moving Average just use the operator `+=`
+```c++
+// Add it through the add method
+myAverage += Gaussian(32, 20);
+myAverage += Gaussian(70, 3);
+myAverage += Gaussian(11, 44)4;
+
+// You can also add an double/integer to it
+// (will be converted automaticaly to a Gaussian object)
+myAverage += 32;
+myAverage += 70;
+myAverage += 11;
+
 ```
 
 
