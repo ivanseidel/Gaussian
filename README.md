@@ -1,6 +1,6 @@
 # Gaussian
 
-This library was developed targeting `Arduino` applications. However, works just great with any C++.
+This library was developed targeting **`Arduino`** applications. However, works just great with any C++.
 
 The use of Gaussians is really hard because requires a deep understanding about complex math.
 
@@ -8,6 +8,9 @@ The use of Gaussians is really hard because requires a deep understanding about 
 
 Do you want to do a [Moving Average](https://en.wikipedia.org/wiki/Moving_average)? `GaussianAverage`
 is just what you are looking for. Simple or with Gaussians, it's already implemented for you.
+
+Find out more about Gaussians here: [Wikipedia::Gaussian Function](http://en.wikipedia.org/wiki/Gaussian_function).
+
 
 ## Installation
 
