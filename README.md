@@ -1,8 +1,10 @@
 # Gaussian
 
-The use of Gaussians is really hard because requires a deep understanding about complex math. Not anymore.
-We have done it for you, fell free to use the fully-implemented class of `Gaussian`.
-Also, if you intend to do a `Moving Average`, `GaussianAverage` is just what you are looking for.
+This library was developed targeting `Arduino` applications. However, works just great with any C++.
+
+The use of Gaussians is really hard because requires a deep understanding about complex math. **Not anymore.**  
+We have done it for you, fell free to use the fully-implemented class of `Gaussian`.  
+Do you want to do a [Moving Average](https://en.wikipedia.org/wiki/Moving_average)? `GaussianAverage` is just what you are looking for.
 
 ## Installation
 
@@ -10,16 +12,24 @@ Also, if you intend to do a `Moving Average`, `GaussianAverage` is just what you
 2. Unzip and modify the Folder name to "Gaussian" (Remove the '-version')
 3. Paste the modified folder on your Library folder (On your `Libraries` folder inside Sketchbooks or Arduino software).
 
-## Getting Started
+## Getting started
 
-To call a function `handler` every `1000` microseconds:
+### `Gaussian` class
 
+A class that contains a `mean` and a `variance` attribute.
+
+Also contains methods to do sums with others `Gaussians`.
+
+#### To declare a simple Gaussian:
 ```c++
-Timer3.attachInterrupt(handler).start(1000);
-// or:
-Timer3.attachInterrupt(handler).setPeriod(1000).start();
-// or, to select whichever available timer:
-Timer.getAvailable().attachInterrupt(handler).start(1000);
+// Simple Gaussian initialization and instantiation
+Gaussian myGaussian = Gaussian(mean, variance);
+
+// This will declare a Gaussian with mean = 0 and variance = MAX_VARIANCE (A really big value)
+Gaussian myGaussian = Gaussian();
+
+// This will do the same as above
+Gaussian myGaussian();
 ```
 
 To call a function `handler` `10` times a second:
