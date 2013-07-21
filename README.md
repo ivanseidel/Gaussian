@@ -91,6 +91,27 @@ result = g1;
 result += g2;
 ```
 
+There are also two methods very usefull for plotting and generating normal distributed random values.
+
+Check the examples `GaussianUniformPlot` and `GaussianRandomPlot`
+
+#### Plotting Gaussians and randomizing values
+```c++
+// In case you want to find out the probability of 'x' of the Gaussian,
+// make use of the plot(x) method.
+Gaussian myGaussian(3, 5.4);
+
+double Y1 = myGaussian.plot(3);
+double Y2 = myGaussian.plot(7.3);
+
+// Also, if you want to generate a normaly distribute value for the
+// given Gaussian, make use of the random() method.
+
+// This will generate a random value, normaly distribute around the mean
+double myRandomX = myGaussian.random();
+double otherRandomX = myGaussian.random();
+```
+
 ============================
 
 ### `GaussianAverage` class
@@ -170,27 +191,6 @@ myAverage.process();
 myAverage.vary(30).move(10);
 
 mySavedAverage = myAverage;
-```
-
-There are also two methods very usefull for plotting and generating normal distributed random values.
-
-Check the examples `GaussianUniformPlot` and `GaussianRandomPlot`
-
-#### Plotting Gaussians and randomizing values
-```c++
-// In case you want to find out the probability of 'x' of the Gaussian,
-// make use of the plot(x) method.
-Gaussian myGaussian(3, 5.4);
-
-double Y1 = myGaussian.plot(3);
-double Y2 = myGaussian.plot(7.3);
-
-// Also, if you want to generate a normaly distribute value for the
-// given Gaussian, make use of the random() method.
-
-// This will generate a random value, normaly distribute around the mean
-double myRandomX = myGaussian.random();
-double otherRandomX = myGaussian.random();
 ```
 
 ------------------------
