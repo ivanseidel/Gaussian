@@ -215,7 +215,7 @@ mySavedAverage = myAverage;
 
 - `double` `Gaussian::plot(double x)` - Returns the probability of 'x'.
 
-- `double` `Gaussian::random()` - Returns a normaly distributed value with the mean and variance of the Gaussian.
+- `double` `Gaussian::random()` - Returns a random normaly distributed value.
 
 - `void` `Gaussian::operator=(Gaussian _gaus)` - Copies the mean and variance to current object.
 
