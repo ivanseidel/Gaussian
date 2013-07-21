@@ -91,28 +91,6 @@ result = g1;
 result += g2;
 ```
 
-There are also two methods very usefull for ploting and generating Gaussianic noise.
-
-#### Ploting Gaussians and Gasussian random
-```c++
-// In case you need to know the probability for the given Gaussian,
-// you can use the method plot(x), that will return the value Y
-// for the gaussian.
-Gaussian myGaussian(3, 32);
-double yVal1 = myGaussian.plot(3);
-double yVal2 = myGaussian.plot(7.54);
-
-
-// Also, if you want to generate a random number normal distributed
-// make use of the random() method INSIDE the Gaussian class
-
-// This will generate a number normaly distributed around the mean
-// of the Gaussian.
-double randomValue = myGaussian.random();
-
-```
-
-
 ============================
 
 ### `GaussianAverage` class
@@ -194,6 +172,27 @@ myAverage.vary(30).move(10);
 mySavedAverage = myAverage;
 ```
 
+There are also two methods very usefull for plotting and generating normal distributed random values.
+
+Check the examples `GaussianUniformPlot` and `GaussianRandomPlot`
+
+#### Plotting Gaussians and randomizing values
+```c++
+// In case you want to find out the probability of 'x' of the Gaussian,
+// make use of the plot(x) method.
+Gaussian myGaussian(3, 5.4);
+
+double Y1 = myGaussian.plot(3);
+double Y2 = myGaussian.plot(7.3);
+
+// Also, if you want to generate a normaly distribute value for the
+// given Gaussian, make use of the random() method.
+
+// This will generate a random value, normaly distribute around the mean
+double myRandomX = myGaussian.random();
+double otherRandomX = myGaussian.random();
+```
+
 ------------------------
 
 ## Library Reference
@@ -214,7 +213,9 @@ mySavedAverage = myAverage;
 
 - `Gaussian` `Gaussian::vary(double _val)` - Adds _val to the variance.
 
-- `double` `Gaussian::plot(double x)` - Returns the probability of x on the Gaussian.
+- `double` `Gaussian::plot(double x)` - Returns the probability of 'x'.
+
+- `double` `Gaussian::random()` - Returns a normaly distributed value with the mean and variance of the Gaussian.
 
 - `void` `Gaussian::operator=(Gaussian _gaus)` - Copies the mean and variance to current object.
 
