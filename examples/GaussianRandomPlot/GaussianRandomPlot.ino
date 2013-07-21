@@ -43,7 +43,7 @@ void loop() {
 		}
 
 		double val = g1.random();
-		int place = (int)val - g1.mean + zero;
+		int place = (int)round(val - g1.mean + zero);
 		place = constrain(place, 0, SIZE);
 		hits[place]++;
 	}
