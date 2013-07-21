@@ -13,7 +13,10 @@
 #ifndef Gaussian_h
 #define Gaussian_h
 
-#define MAX_VARIANCE 100000
+#include "Math.h"
+#include "Arduino.h"
+
+#define MAX_VARIANCE 2147483600
 
 class Gaussian
 {
@@ -114,6 +117,17 @@ public:
 	*/
 	virtual void operator+=(Gaussian _gaus){
 		*this = sum(_gaus);
+	}
+
+	/*
+		Randomize a variable with Gaussian distribuition,
+		using it's mean and variance
+	*/
+	virtual double random(){
+		double R1, R2;
+		R1 = ::random(MAX_VARIANCE)/(double)MAX_VARIANCE;
+		R2 = ::random(MAX_VARIANCE)/(double)MAX_VARIANCE;
+		return mean + variance * cos( 2 * M_PI * R1) * sqrt(-log(R2));
 	}
 
 };
