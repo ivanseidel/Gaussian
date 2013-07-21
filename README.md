@@ -228,3 +228,5 @@ mySavedAverage = myAverage;
 ### Version History
 
 * `1.0 (2013-07-20)`: Original release
+
+![Gaussian](https://d2weczhvl823v0.cloudfront.net/ivanseidel/Gaussian/trend.png)
