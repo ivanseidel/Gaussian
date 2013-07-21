@@ -91,6 +91,28 @@ result = g1;
 result += g2;
 ```
 
+There are also two methods very usefull for ploting and generating Gaussianic noise.
+
+#### Ploting Gaussians and Gasussian random
+```c++
+// In case you need to know the probability for the given Gaussian,
+// you can use the method plot(x), that will return the value Y
+// for the gaussian.
+Gaussian myGaussian(3, 32);
+double yVal1 = myGaussian.plot(3);
+double yVal2 = myGaussian.plot(7.54);
+
+
+// Also, if you want to generate a random number normal distributed
+// make use of the random() method INSIDE the Gaussian class
+
+// This will generate a number normaly distributed around the mean
+// of the Gaussian.
+double randomValue = myGaussian.random();
+
+```
+
+
 ============================
 
 ### `GaussianAverage` class
@@ -191,6 +213,8 @@ mySavedAverage = myAverage;
 - `Gaussian` `Gaussian::setVariance(double _val)` - Set the variance to _val.
 
 - `Gaussian` `Gaussian::vary(double _val)` - Adds _val to the variance.
+
+- `double` `Gaussian::plot(double x)` - Returns the probability of x on the Gaussian.
 
 - `void` `Gaussian::operator=(Gaussian _gaus)` - Copies the mean and variance to current object.
 
