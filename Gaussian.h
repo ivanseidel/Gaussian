@@ -130,6 +130,14 @@ public:
 		return mean + variance * cos( 2 * M_PI * R1) * sqrt(-log(R2));
 	}
 
+	virtual double plot(double x){
+		static const float inv_sqrt_2pi = 0.3989422804014327;
+		double sigma = sqrt(variance);
+	    double a = (x - mean) / sigma;
+
+	    return inv_sqrt_2pi / sigma * exp(-0.5f * a * a);
+	}
+
 };
 
 

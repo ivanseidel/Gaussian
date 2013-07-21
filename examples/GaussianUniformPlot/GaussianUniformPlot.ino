@@ -7,17 +7,14 @@ void setup() {
 }
 
 // The number of "slots" to record the hits of gaussian random
-#define SIZE 36
-
-// How many tests will be performed
-#define TESTS 20000
+#define SIZE 26
 
 // How many characters will have, in width?
 #define BAR_SIZE 40
 
 void loop() {
-	Gaussian g1 = Gaussian(0, 10);
-	long zero = SIZE/2 - g1.mean;  
+	Gaussian gaus = Gaussian(0, 15);
+	long zero = SIZE/2 - gaus.mean;  
 	long hits[SIZE] = {0};
 
 	// Zero the array
@@ -32,11 +29,10 @@ void loop() {
 
 	Serial.println(" 100%");
 
-	// Process the gaussians and randomize 'TESTS' times
+	// Process the gaussians and calculate the Y for each X
 	int lastStep = 0, step;
-	Serial.print("=");
-	for(int i = 0; i < TESTS; i++){
-		step = (double)i/TESTS*BAR_SIZE;
+	for(int i = 0; i < SIZE; i++){
+		step = (double)(i+1)/SIZE*BAR_SIZE;
 		if(step > lastStep){
 			while(lastStep < step){
 				Serial.print("=");
@@ -44,10 +40,8 @@ void loop() {
 			}
 		}
 
-		double val = g1.random();
-		int place = (int)round(val - g1.mean + zero);
-		place = constrain(place, 0, SIZE);
-		hits[place]++;
+		hits[i] = gaus.plot(i-zero)*1000;
+
 	}
 	Serial.print(" END!\n");
 
@@ -66,7 +60,7 @@ void loop() {
 	Serial.print("\tMaxHit: ");  
 	Serial.println(maxHit);
 
-	for(int i = 1; i < SIZE - 1; i++){
+	for(int i = 0; i < SIZE; i++){
 		int len = hits[i]/scale;
 
 		for(int x = 0; x < len; x++)
