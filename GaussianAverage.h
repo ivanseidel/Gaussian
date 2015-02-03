@@ -91,7 +91,7 @@ public:
 
 			avg = Gaussian();
 			for(int i = 0; i < gaussians->size(); i++){
-				Gaussian tmp = gaussians->get(i, true);
+				Gaussian tmp = gaussians->get(i);
 
 				// This will enable quadratic importance for newer samples
 				// tmp.variance = tmp.variance / (i+1.0);
