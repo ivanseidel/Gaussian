@@ -1,0 +1,31 @@
+#######################################
+# Syntax Coloring
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+Gaussian	KEYWORD1
+GaussianAverage	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+mean	KEYWORD2
+variance	KEYWORD2
+setMean	KEYWORD2
+move	KEYWORD2
+setVariance	KEYWORD2
+random	KEYWORD2
+plot	KEYWORD2
+
+# Defined by GaussianAverage
+add	KEYWORD2
+process	KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
