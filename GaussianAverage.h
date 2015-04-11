@@ -45,13 +45,11 @@ public:
 		Creates a new Gaussian Moving Average that
 		keeps track of _n last Gaussians
 	*/
-	GaussianAverage(int _n = 4){
+	GaussianAverage(int _n = 4): Gaussian(){
 		gaussians = new LinkedList<Gaussian>();		
 		n = _n;
 
 		isCached = false;
-
-		Gaussian::Gaussian();
 	}
 
 	/*
