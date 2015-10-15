@@ -87,9 +87,9 @@ public:
 		// Checks if the process is already cached
 		if(!isCached){
 
-			avg = gaussians->get(0, true);
+			avg = gaussians->get(0);
 			for(int i = 1; i < gaussians->size(); i++){
-				Gaussian tmp = gaussians->get(i, true);
+				Gaussian tmp = gaussians->get(i);
 
 				// This will enable quadratic importance for newer samples
 				// tmp.variance = tmp.variance / (i+1.0);
