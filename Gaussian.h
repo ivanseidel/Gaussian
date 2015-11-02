@@ -13,7 +13,7 @@
 #ifndef Gaussian_h
 #define Gaussian_h
 
-#include "Math.h"
+#include "math.h"
 #include "Arduino.h"
 
 #define MAX_VARIANCE 2147483600
