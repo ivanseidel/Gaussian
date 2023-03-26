@@ -124,7 +124,7 @@ public:
 		double R1, R2;
 		R1 = ::random(MAX_VARIANCE)/(double)MAX_VARIANCE;
 		R2 = ::random(MAX_VARIANCE)/(double)MAX_VARIANCE;
-		return mean + variance * cos( 2 * M_PI * R1) * sqrt(-2*log(R2));
+		return mean + sqrt(variance) * cos( 2 * M_PI * R1) * sqrt(-2*log(R2));
 	}
 
 	virtual double plot(double x){
